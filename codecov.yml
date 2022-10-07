@@ -14,7 +14,6 @@ ignore:
   - "integration-tests"
   - "load-tests"
   - "tooling-tests"
-  - "ballerina/reflection_pb.bal"
 
 coverage:
   precision: 2

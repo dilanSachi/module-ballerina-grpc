@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/log;
 import grpc_tests.messageWithService;
 
-listener grpc:Listener ep71 = new (9171, {reflectionEnabled: true});
+listener grpc:Listener ep71 = new (9171);
 
 @grpc:Descriptor {value: PACKAGE_WITH_SERVICE_IN_SUBMODULE_DESC}
 service "helloWorld71" on ep71 {
