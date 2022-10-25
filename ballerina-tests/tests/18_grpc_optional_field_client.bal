@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testOptionalFieldMessage() returns grpc:Error? {
     CheckoutServiceClient checkoutServiceBlockingEp = check new ("http://localhost:9108");
 

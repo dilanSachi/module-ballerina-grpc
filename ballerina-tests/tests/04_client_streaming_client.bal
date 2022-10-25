@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreaming() returns grpc:Error? {
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
     // Client endpoint configuration
@@ -33,7 +33,7 @@ isolated function testClientStreaming() returns grpc:Error? {
     test:assertEquals(<string>response, "Ack");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingSendMessageAfterError() returns grpc:Error? {
     HelloWorld7Client helloWorldEp = check new ("http://localhost:9094");
     LotsOfGreetingsStreamingClient res = check helloWorldEp->lotsOfGreetings();
@@ -44,7 +44,7 @@ isolated function testClientStreamingSendMessageAfterError() returns grpc:Error?
     test:assertEquals((<grpc:Error>err).message(), "Client call was already cancelled.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingSendMessageAfterComplete() returns grpc:Error? {
     grpc:ClientConfiguration config = {
         compression: grpc:COMPRESSION_ALWAYS

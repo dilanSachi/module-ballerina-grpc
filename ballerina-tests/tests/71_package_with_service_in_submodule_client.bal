@@ -19,14 +19,14 @@ import ballerina/test;
 import ballerina/grpc;
 import grpc_tests.messageWithService;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryPackageWithServiceInSubmodule() returns error? {
     helloWorld71Client 'client = check new ("http://localhost:9171");
     messageWithService:ResMessage response = check 'client->helloWorld71Unary({req: 100, value: "Hello Service"});
     test:assertEquals(response, {req: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientStreamingPackageWithServiceInSubmodule() returns error? {
     helloWorld71Client 'client = check new ("http://localhost:9171");
     HelloWorld71ClientStreamStreamingClient streamingClient = check 'client->helloWorld71ClientStream();
@@ -37,7 +37,7 @@ function testClientStreamingPackageWithServiceInSubmodule() returns error? {
     test:assertEquals(response, {req: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingPackageWithServiceInSubmodule() returns error? {
     helloWorld71Client 'client = check new ("http://localhost:9171");
     messageWithService:ReqMessage m1 = {req: 1, value: "Hello Service"};
@@ -46,7 +46,7 @@ function testServerStreamingPackageWithServiceInSubmodule() returns error? {
     test:assertEquals(response.next(), {value: {req: 2, value: "Hi"}});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testBidiStreamingPackageWithServiceInSubmodule() returns error? {
     helloWorld71Client 'client = check new ("http://localhost:9171");
     HelloWorld71BidiStreamStreamingClient streamingClient = check 'client->helloWorld71BidiStream();

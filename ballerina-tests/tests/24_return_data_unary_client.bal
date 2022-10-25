@@ -18,14 +18,14 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/lang.'string as langstring;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturn() returns grpc:Error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     string response = check helloWorldBlockingEp->testStringValueReturn("WSO2");
     test:assertEquals(response, "WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testFloatValueReturn() returns grpc:Error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     float n = 4.5;
@@ -33,7 +33,7 @@ isolated function testFloatValueReturn() returns grpc:Error? {
     test:assertEquals(response, n);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public isolated function testDoubleValueReturn() returns grpc:Error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     float n = 4.5;
@@ -41,7 +41,7 @@ public isolated function testDoubleValueReturn() returns grpc:Error? {
     test:assertEquals(response, n);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public isolated function testInt64ValueReturn() returns grpc:Error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     int n = 45;
@@ -49,7 +49,7 @@ public isolated function testInt64ValueReturn() returns grpc:Error? {
     test:assertEquals(response, n);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public isolated function testBoolValueReturn() returns grpc:Error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     boolean b = true;
@@ -57,7 +57,7 @@ public isolated function testBoolValueReturn() returns grpc:Error? {
     test:assertTrue(response);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public isolated function testBytesValueReturn() returns error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     string s = "Ballerina";
@@ -66,7 +66,7 @@ public isolated function testBytesValueReturn() returns error? {
     test:assertEquals(returnedString, s);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public isolated function testRecordValueReturn() returns grpc:Error? {
     HelloWorld24Client helloWorldBlockingEp = check new ("http://localhost:9114");
     SampleMsg24 response = check helloWorldBlockingEp->testRecordValueReturn("WSO2");
@@ -74,7 +74,7 @@ public isolated function testRecordValueReturn() returns grpc:Error? {
     test:assertEquals(response.id, 0);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public isolated function testRecordValueReturnStream() returns grpc:Error? {
     HelloWorld24Client helloWorldEp = check new ("http://localhost:9114");
     _ = check helloWorldEp->testRecordValueReturnStream("WSO2");

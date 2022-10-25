@@ -18,7 +18,7 @@ import ballerina/test;
 import ballerina/time;
 import ballerina/protobuf.types.'any;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPredefinedTypesInMessages() returns error? {
     PredefinedTypesInServiceClient cl = check new ("http://localhost:9166");
 

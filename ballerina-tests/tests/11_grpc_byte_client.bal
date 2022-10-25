@@ -20,7 +20,7 @@ import ballerina/test;
 
 type ByteArrayTypedesc typedesc<byte[]>;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testByteArray() returns grpc:Error? {
     ByteServiceClient blockingEp = check new ("http://localhost:9101");
     string statement = "Lion in Town.";
@@ -30,7 +30,7 @@ isolated function testByteArray() returns grpc:Error? {
     test:assertEquals(response, bytes);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testLargeByteArray() returns error? {
     string filePath = "tests/resources/sample_bytes.txt";
     ByteServiceClient blockingEp = check new ("http://localhost:9101");

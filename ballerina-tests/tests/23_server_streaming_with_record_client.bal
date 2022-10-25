@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingWithRecord() returns error? {
     string name = "WSO2";
     HelloWorldServerStreamingClient helloWorldEp = check new ("http://localhost:9113");

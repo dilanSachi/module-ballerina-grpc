@@ -16,7 +16,7 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideListServicesReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9144");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -35,7 +35,7 @@ function testRouteGuideListServicesReflection() returns error? {
     check streamingClient->complete();
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideFileByFilenameReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9144");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -69,7 +69,7 @@ function testRouteGuideFileByFilenameReflection() returns error? {
     check streamingClient->complete();
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideFileContainingSymbolReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9144");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -117,7 +117,7 @@ function testRouteGuideFileContainingSymbolReflection() returns error? {
     check streamingClient->complete();
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideFileContainingUnknownSymbolReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9144");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();

@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnaryRecordValueReturn() returns grpc:Error? {
     HelloWorld31Client ep = check new ("http://localhost:9121");
     SampleMsg31 reqMsg = {name: "WSO2", id: 8};
@@ -26,7 +26,7 @@ isolated function testUnaryRecordValueReturn() returns grpc:Error? {
     test:assertEquals(response.id, 7);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnaryErrorReturn() returns grpc:Error? {
     HelloWorld31Client ep = check new ("http://localhost:9121");
     SampleMsg31 reqMsg = {id: 8};

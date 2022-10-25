@@ -27,14 +27,14 @@ type StockQuotesTypedesc typedesc<StockQuotes>;
 
 type StockNamesTypedesc typedesc<StockNames>;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testSendNestedStruct() returns grpc:Error? {
     Person p = {name: "Sam", address: {postalCode: 10300, state: "Western", country: "Sri Lanka"}};
     string response = check helloWorldClient->testInputNestedStruct(p);
     test:assertEquals(response, "Submitted name: Sam");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveNestedStruct() returns grpc:Error? {
     string name = "WSO2";
     Person response = check helloWorldClient->testOutputNestedStruct(name);
@@ -44,7 +44,7 @@ function testReceiveNestedStruct() returns grpc:Error? {
     test:assertEquals(response.address.country, "USA");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testSendStructReceiveStruct() returns grpc:Error? {
     StockRequest request = {name: "WSO2"};
     StockQuote sq = check helloWorldClient->testInputStructOutputStruct(request);
@@ -55,7 +55,7 @@ function testSendStructReceiveStruct() returns grpc:Error? {
     test:assertEquals(sq.high, 149.18);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testSendNoReceiveStruct() returns grpc:Error? {
     StockQuotes sq = check helloWorldClient->testNoInputOutputStruct();
     test:assertEquals(sq.stock.length(), 2);
@@ -63,7 +63,7 @@ function testSendNoReceiveStruct() returns grpc:Error? {
     test:assertEquals(sq.stock[1].symbol, "Google");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testSendNoReceiveArray() returns grpc:Error? {
     StockNames sq = check helloWorldClient->testNoInputOutputArray();
     test:assertEquals(sq.names.length(), 2);
@@ -71,7 +71,7 @@ function testSendNoReceiveArray() returns grpc:Error? {
     test:assertEquals(sq.names[1], "Google");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testSendStructNoReceive() returns grpc:Error? {
     StockQuote quote = {symbol: "Ballerina", name: "ballerina/io", last: 1.0, low: 0.5, high: 2.0};
     _ = check helloWorldClient->testInputStructNoOutput(quote);

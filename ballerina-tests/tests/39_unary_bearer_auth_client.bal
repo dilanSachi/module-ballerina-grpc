@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithBearerTokenAuth() returns grpc:Error? {
     HelloWorld39Client helloWorldEp = check new ("http://localhost:9129");
     grpc:BearerTokenConfig config = {token: "eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ"};
@@ -34,7 +34,7 @@ isolated function testStringValueReturnWithBearerTokenAuth() returns grpc:Error?
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithInvalidBearerTokenAuth() returns grpc:Error? {
     HelloWorld39Client helloWorldEp = check new ("http://localhost:9129");
     grpc:BearerTokenConfig config = {token: "ABCD"};

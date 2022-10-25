@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingWithDifferentTypes() returns error? {
     DataTypesServiceClient ep = check new ("http://localhost:9142");
     stream<Int32ArrMsg, grpc:Error?> int32Strm = check ep->helloWithInt32Array("int32");

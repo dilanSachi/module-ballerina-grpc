@@ -19,7 +19,7 @@ import ballerina/test;
 import ballerina/time;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testCallWithDeadlinePropergation() returns grpc:Error? {
     HelloWorld36S1Client helloWorldClient = check new ("http://localhost:9126");
     time:Utc current = time:utcNow();

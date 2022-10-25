@@ -17,14 +17,14 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientFunctionUtilsMalformedUrl() returns error? {
     HelloWorld51Client|grpc:Error hClient = new ("localhost:9151");
     test:assertTrue(hClient is grpc:Error);
     test:assertEquals((<grpc:Error>hClient).message(), "Malformed URL: localhost:9151");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientFunctionUtilsInvalidRPCCall() returns error? {
     HelloWorld51Client hClient = check new ("http://localhost:9151");
     string|grpc:Error unaryResult = hClient->stringUnary("Hey");

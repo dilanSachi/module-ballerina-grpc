@@ -18,7 +18,7 @@ import ballerina/test;
 import ballerina/time;
 import ballerina/protobuf.types.timestamp;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testGetGreeting() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     Greeting greeting = check utsClient->getGreeting("Hello");
@@ -27,7 +27,7 @@ isolated function testGetGreeting() returns error? {
     test:assertEquals(greeting, expectedGreeting);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testExchangeGreeting() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc customTime = [1228302930, 0.12];
@@ -36,7 +36,7 @@ isolated function testExchangeGreeting() returns error? {
     test:assertEquals(greeting, expectedGreeting);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testExchangeTime() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc sendingTime = check time:utcFromString("2008-12-03T11:15:30.120Z");
@@ -45,7 +45,7 @@ isolated function testExchangeTime() returns error? {
     test:assertEquals(receivedTime, expectedTime);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testExchangeTimeContext() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc sendingTime = check time:utcFromString("2008-12-03T11:15:30.120Z");
@@ -57,7 +57,7 @@ isolated function testExchangeTimeContext() returns error? {
     test:assertEquals(result.content, expectedTime);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testTimestampServerStream() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc sendingTime = check time:utcFromString("2008-12-03T11:15:30.120Z");
@@ -72,7 +72,7 @@ function testTimestampServerStream() returns error? {
     test:assertEquals(receivedData, [sendingTime, sendingTime, sendingTime, sendingTime]);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testTimestampContextServerStream() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc sendingTime = check time:utcFromString("2008-12-03T11:15:30.120Z");
@@ -90,7 +90,7 @@ function testTimestampContextServerStream() returns error? {
     test:assertEquals(receivedData, [sendingTime, sendingTime, sendingTime, sendingTime]);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testTimestampClientStream() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc sendingTime = check time:utcFromString("2008-12-03T11:15:30.120Z");
@@ -101,7 +101,7 @@ isolated function testTimestampClientStream() returns error? {
     test:assertEquals(response, sendingTime);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testTimestampContextClientStream() returns error? {
     TimestampServiceClient utsClient = check new ("http://localhost:9147");
     time:Utc sendingTime = check time:utcFromString("2008-12-03T11:15:30.120Z");

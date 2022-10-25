@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryCases() returns grpc:Error? {
     HelloWorld62Client helloWorldEp = check new ("http://localhost:9162", maxInboundMessageSize = 1024);
 
@@ -38,7 +38,7 @@ function testUnaryCases() returns grpc:Error? {
     test:assertEquals((<error>result).message(), "Frame size 2503 exceeds maximum: 1024.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientStreamingCases() returns grpc:Error? {
     string[] requests = ["Hi", "Hey", "Hello"];
 
@@ -78,7 +78,7 @@ function testClientStreamingCases() returns grpc:Error? {
     test:assertEquals((<error>result).message(), "HTTP status code 500\ninvalid content-type: text/plain\nMESSAGE DATA: Frame size 2503 exceeds maximum: 1024.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingCases() returns error? {
     HelloWorld62Client helloWorldEp = check new ("http://localhost:9162", maxInboundMessageSize = 1024);
 
@@ -108,7 +108,7 @@ function testServerStreamingCases() returns error? {
     test:assertEquals((<error>err).message(), "HTTP status code 500\ninvalid content-type: text/plain\nMESSAGE DATA: Frame size 2503 exceeds maximum: 1024.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testBidiStreamingCases() returns grpc:Error? {
     string[] requests = ["Hi", "Hey", "Hello"];
 

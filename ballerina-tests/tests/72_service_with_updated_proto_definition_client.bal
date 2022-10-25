@@ -19,7 +19,7 @@ import ballerina/test;
 
 // Related service definition can be found in https://github.com/dilanSachi/grpc-ballerina-docker-service
 // and the docker container can be found in https://hub.docker.com/r/dilansachi/grpc_ballerina_docker_service
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServiceWithUpdatedProtoDefinition() returns error? {
     if !isWindowsEnvironment() {
         UpdatedServiceClient cc = check new("http://localhost:9172");
@@ -37,7 +37,7 @@ function testServiceWithUpdatedProtoDefinition() returns error? {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServiceWithUpdatedProtoDefinitionWithStructAndOneOfField() returns error? {
     if !isWindowsEnvironment() {
         UpdatedServiceClient cc = check new("http://localhost:9172");

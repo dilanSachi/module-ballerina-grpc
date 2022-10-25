@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/time;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingFromReturnRecordWithDeadline() returns grpc:Error? {
     HelloWorld37Client helloWorldCaller = check new ("http://localhost:9127");
     time:Utc current = time:utcNow();

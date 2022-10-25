@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/protobuf.types.wrappers;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithBasicAuth() returns grpc:Error? {
     HelloWorld28Client helloWorldEp = check new ("http://localhost:9118");
     grpc:CredentialsConfig config = {
@@ -38,7 +38,7 @@ isolated function testStringValueReturnWithBasicAuth() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithInvalidBasicAuth() returns grpc:Error? {
     HelloWorld28Client helloWorldEp = check new ("http://localhost:9118");
     grpc:CredentialsConfig config = {
@@ -59,7 +59,7 @@ isolated function testStringValueReturnWithInvalidBasicAuth() returns grpc:Error
     test:assertEquals((<grpc:Error>response).message(), "Failed to authenticate username 'admin' from file user store.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithBasicAuthWithEmpty() returns grpc:Error? {
     map<string|string[]> requestHeaders = {};
     grpc:CredentialsConfig config = {
@@ -73,7 +73,7 @@ isolated function testStringValueReturnWithBasicAuthWithEmpty() returns grpc:Err
     test:assertEquals((<grpc:Error>result).message(), "Failed to enrich request with Basic Auth token. Username or password cannot be empty.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithBasicAuthWithInvalidHeader() returns grpc:Error? {
     HelloWorld28Client helloWorldEp = check new ("http://localhost:9118");
     map<string|string[]> requestHeaders = {

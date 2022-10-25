@@ -50,6 +50,7 @@ import io.ballerina.stdlib.http.api.HttpConstants;
 import io.ballerina.stdlib.http.transport.contract.ServerConnector;
 import io.ballerina.stdlib.http.transport.contract.ServerConnectorFuture;
 import io.ballerina.stdlib.http.transport.contract.config.ListenerConfiguration;
+import io.ballerina.stdlib.http.transport.contract.exceptions.ServerConnectorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -156,6 +157,7 @@ public class FunctionUtils extends AbstractGrpcNativeFunction {
                             "Failed to start server connector '" + serverConnector.getConnectorID()
                                     + "'. " + ex.getMessage())));
         }
+        listener.addNativeData("future", serverConnectorFuture);
         listener.addNativeData(HttpConstants.CONNECTOR_STARTED, true);
         return null;
     }
@@ -189,10 +191,14 @@ public class FunctionUtils extends AbstractGrpcNativeFunction {
      * @param serverEndpoint service listener instance.
      * @return Error if there is an error while stopping the server, else returns nil.
      */
-    public static Object gracefulStop(BObject serverEndpoint) {
+    public static Object gracefulStop(BObject serverEndpoint) throws ServerConnectorException {
 
         getServerConnector(serverEndpoint).stop();
         serverEndpoint.addNativeData(HttpConstants.CONNECTOR_STARTED, false);
+        ServerConnectorFuture scf = (ServerConnectorFuture) serverEndpoint.getNativeData("future");
+        if (scf != null) {
+            scf.notifyPortUnbindingEvent(getServerConnector(serverEndpoint).getConnectorID(), false);
+        }
         return null;
     }
 
@@ -202,9 +208,13 @@ public class FunctionUtils extends AbstractGrpcNativeFunction {
      * @param serverEndpoint service listener instance.
      * @return Error if there is an error while stopping the server, else returns nil.
      */
-    public static Object immediateStop(BObject serverEndpoint) {
+    public static Object immediateStop(BObject serverEndpoint) throws ServerConnectorException {
         getServerConnector(serverEndpoint).immediateStop();
         serverEndpoint.addNativeData(HttpConstants.CONNECTOR_STARTED, false);
+        ServerConnectorFuture scf = (ServerConnectorFuture) serverEndpoint.getNativeData("future");
+        if (scf != null) {
+            scf.notifyPortUnbindingEvent(getServerConnector(serverEndpoint).getConnectorID(), false);
+        }
         return null;
     }
 

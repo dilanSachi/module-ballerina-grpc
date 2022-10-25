@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthBiDiWithCaller() returns error? {
     grpc:JwtIssuerConfig config = {
         username: "admin",
@@ -46,7 +46,7 @@ function testHello55JWTAuthBiDiWithCaller() returns error? {
     test:assertEquals(<string>s, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthBiDiWithCallerUnauthenticated() returns error? {
     map<string|string[]> requestHeaders = {
         "x-id": "0987654321",
@@ -65,7 +65,7 @@ function testHello55JWTAuthBiDiWithCallerUnauthenticated() returns error? {
     test:assertEquals((<grpc:UnauthenticatedError>s).message(), "Failed to authenticate client");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthBiDiWithCallerInvalidPermission() returns error? {
     grpc:JwtIssuerConfig config = {
         username: "admin",
@@ -93,7 +93,7 @@ function testHello55JWTAuthBiDiWithCallerInvalidPermission() returns error? {
     test:assertEquals((<grpc:PermissionDeniedError>s).message(), "Permission denied");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthBiDiWithReturn() returns error? {
     grpc:JwtIssuerConfig config = {
         username: "admin",
@@ -124,7 +124,7 @@ function testHello55JWTAuthBiDiWithReturn() returns error? {
     test:assertEquals(<string>s, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthUnary() returns grpc:Error? {
     grpc:JwtIssuerConfig config = {
         username: "admin",
@@ -148,7 +148,7 @@ function testHello55JWTAuthUnary() returns grpc:Error? {
     test:assertEquals(result, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthUnaryUnauthenticated() returns error? {
     map<string|string[]> requestHeaders = {
         "authorization": "bearer "
@@ -164,7 +164,7 @@ function testHello55JWTAuthUnaryUnauthenticated() returns error? {
     test:assertEquals((<grpc:Error>result).message(), "Failed to authenticate client");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthUnaryInvalidPermission() returns error? {
     grpc:JwtIssuerConfig config = {
         username: "admin",
@@ -189,7 +189,7 @@ function testHello55JWTAuthUnaryInvalidPermission() returns error? {
     test:assertEquals((<grpc:Error>result).message(), "Permission denied");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55LdapAuth() returns error? {
 
     if !isWindowsEnvironment() {
@@ -204,7 +204,7 @@ function testHello55LdapAuth() returns error? {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55BasicAuth() returns grpc:Error? {
     grpc:CredentialsConfig config = {
         username: "admin",
@@ -216,7 +216,7 @@ function testHello55BasicAuth() returns grpc:Error? {
     test:assertEquals(response, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55OAuth2Auth() returns grpc:Error? {
     grpc:OAuth2ClientCredentialsGrantConfig config = {
         tokenUrl: "https://localhost:" + oauth2AuthorizationServerPort.toString() + "/oauth2/token",
@@ -238,7 +238,7 @@ function testHello55OAuth2Auth() returns grpc:Error? {
     test:assertEquals(response, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55JWTAuthWithEmptyScope() returns error? {
     grpc:JwtIssuerConfig config = {
         username: "admin",
@@ -262,7 +262,7 @@ function testHello55JWTAuthWithEmptyScope() returns error? {
     test:assertEquals(<string>result, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55LdapAuthWithEmptyScope() returns error? {
     if !isWindowsEnvironment() {
         grpc:CredentialsConfig config = {
@@ -275,7 +275,7 @@ function testHello55LdapAuthWithEmptyScope() returns error? {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55BasicAuthWithEmptyScope() returns error? {
     grpc:CredentialsConfig config = {
         username: "admin",
@@ -287,7 +287,7 @@ function testHello55BasicAuthWithEmptyScope() returns error? {
     test:assertEquals(response, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55OAuth2AuthWithEmptyScope() returns error? {
     grpc:OAuth2ClientCredentialsGrantConfig config = {
         tokenUrl: "https://localhost:" + oauth2AuthorizationServerPort.toString() + "/oauth2/token",
@@ -308,7 +308,7 @@ function testHello55OAuth2AuthWithEmptyScope() returns error? {
     test:assertEquals(response, "Hello");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55ServerStreamingOAuth2Auth() returns error? {
     grpc:OAuth2ClientCredentialsGrantConfig config = {
         tokenUrl: "https://localhost:" + oauth2AuthorizationServerPort.toString() + "/oauth2/token",
@@ -334,7 +334,7 @@ function testHello55ServerStreamingOAuth2Auth() returns error? {
     test:assertEquals((<record {|string value;|}>value2)["value"], "Hello 2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55ClientStreamingOAuth2Auth() returns error? {
     grpc:OAuth2ClientCredentialsGrantConfig config = {
         tokenUrl: "https://localhost:" + oauth2AuthorizationServerPort.toString() + "/oauth2/token",
@@ -361,7 +361,7 @@ function testHello55ClientStreamingOAuth2Auth() returns error? {
     test:assertEquals(<string>response, "Hello World");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello55EmptyAuthHeader() returns error? {
     HelloWorld55EmptyScopeClient hClient = check new ("http://localhost:9255");
     string|grpc:Error response = hClient->hello55EmptyScope("Hello");

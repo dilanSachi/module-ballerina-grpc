@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testRouteGuideMessagesWithUnary() returns error? {
     RouteGuideClient ep = check new ("http://localhost:9144");
     Point p = {latitude: 406109563, longitude: -742186778};
@@ -25,7 +25,7 @@ isolated function testRouteGuideMessagesWithUnary() returns error? {
     test:assertEquals(f, {location: p, name: "f1"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideMessagesWithServerStreaming() returns error? {
     RouteGuideClient ep = check new ("http://localhost:9144");
     Feature[] fs = [
@@ -46,7 +46,7 @@ function testRouteGuideMessagesWithServerStreaming() returns error? {
     test:assertEquals(i, 3);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideMessagesWithClientStreaming() returns error? {
     RouteGuideClient ep = check new ("http://localhost:9144");
     Point[] points = [
@@ -64,7 +64,7 @@ function testRouteGuideMessagesWithClientStreaming() returns error? {
     test:assertEquals(<RouteSummary>response, {point_count: 1, feature_count: 1, distance: 1, elapsed_time: 1});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRouteGuideMessagesWithBidirectionalStreaming() returns error? {
     RouteGuideClient ep = check new ("http://localhost:9144");
     RouteNote[] routeNotes = [

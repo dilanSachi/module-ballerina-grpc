@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testServerStreamingNegative() returns error? {
     HelloWorld53Client ep = check new ("http://localhost:9153");
     stream<string, error?> strm = check ep->hello53("hey");

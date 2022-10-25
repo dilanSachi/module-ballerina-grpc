@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithJwt1() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     grpc:JwtIssuerConfig config = {
@@ -46,7 +46,7 @@ isolated function testStringValueReturnWithJwt1() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithJwt2() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     grpc:JwtIssuerConfig config = {
@@ -74,7 +74,7 @@ isolated function testStringValueReturnWithJwt2() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithJwt3() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     grpc:JwtIssuerConfig config = {
@@ -102,7 +102,7 @@ isolated function testStringValueReturnWithJwt3() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithUnauthorizedJwt1() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     grpc:JwtIssuerConfig config = {
@@ -131,7 +131,7 @@ isolated function testStringValueReturnWithUnauthorizedJwt1() returns grpc:Error
     test:assertEquals((<grpc:Error>response).message(), "Permission denied");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithUnauthorizedJwt2() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     grpc:JwtIssuerConfig config = {
@@ -160,7 +160,7 @@ isolated function testStringValueReturnWithUnauthorizedJwt2() returns grpc:Error
     test:assertEquals((<grpc:Error>response).message(), "Permission denied");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithUnauthorizedJwt3() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     grpc:JwtIssuerConfig config = {
@@ -189,7 +189,7 @@ isolated function testStringValueReturnWithUnauthorizedJwt3() returns grpc:Error
     test:assertEquals((<grpc:Error>response).message(), "Permission denied");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithInvalidHeaderJwt() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     map<string|string[]> requestHeaders = {
@@ -203,7 +203,7 @@ isolated function testStringValueReturnWithInvalidHeaderJwt() returns grpc:Error
     test:assertEquals((<grpc:Error>response).message(), "Credential format does not match to JWT format.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithEmptyHeaderJwt() returns grpc:Error? {
     HelloWorld29Client helloWorldEp = check new ("http://localhost:9119");
     map<string|string[]> requestHeaders = {

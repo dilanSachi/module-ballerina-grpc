@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnarySecuredBlockingWithCerts() returns grpc:Error? {
     GrpcMutualSslServiceClient helloWorldBlockingEp = check new ("https://localhost:9100",
         secureSocket = {
@@ -40,7 +40,7 @@ isolated function testUnarySecuredBlockingWithCerts() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnarySecuredBlockingWithCertsWithTimeouts() returns grpc:Error? {
     GrpcMutualSslServiceClient helloWorldBlockingEp = check new ("https://localhost:9100",
         secureSocket = {

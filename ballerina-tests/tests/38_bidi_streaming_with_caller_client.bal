@@ -20,7 +20,7 @@ import ballerina/test;
 // Client endpoint configuration.
 Chat38Client chatEp = check new ("http://localhost:9128");
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testBidiStreamingServerResponseCount() returns error? {
     // Executes the RPC call and receives the customized streaming client.
     Chat38StreamingClient streamingClient = check chatEp->chat38();

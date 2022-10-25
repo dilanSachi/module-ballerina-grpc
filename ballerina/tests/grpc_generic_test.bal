@@ -16,7 +16,7 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testCheckErrorForRetry() {
     ErrorType[] errorTypes = [
         CancelledError, 
@@ -84,7 +84,7 @@ isolated function testCheckErrorForRetry() {
     test:assertFalse(checkErrorForRetry(allRetryAttemptsFailed, negativeErrorTypes));
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testGetHeaderWithMissingValue() {
     map<string|string[]> headers = {
         "h1": "v1",
@@ -112,7 +112,7 @@ isolated function testGetHeaderWithMissingValue() {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testGetHeaderWithStringArray() returns Error? {
     map<string|string[]> headers = {
         "h1": "v1",
@@ -122,7 +122,7 @@ isolated function testGetHeaderWithStringArray() returns Error? {
     test:assertEquals(val, "v2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testGetHeadersWithStringArray() returns Error? {
     map<string|string[]> headers = {
         "h1": "v1",
@@ -132,13 +132,13 @@ isolated function testGetHeadersWithStringArray() returns Error? {
     test:assertEquals(val, ["v2", "v3"]);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testPrepareAuthError() returns Error? {
     ClientAuthError authError = prepareClientAuthError("Error message", ());
     test:assertEquals(authError.message(), "Error message");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testExtractCredential() returns Error? {
     map<string|string[]> headers = {
         authorization: "sample"
@@ -151,7 +151,7 @@ isolated function testExtractCredential() returns Error? {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testMatchScopes() returns Error? {
     test:assertTrue(matchScopes("read", "read"));
     test:assertTrue(matchScopes(["read", "write", "execute"], "write"));

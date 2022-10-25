@@ -18,7 +18,7 @@ import ballerina/test;
 import ballerina/time;
 import ballerina/protobuf.types.timestamp;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiTimestampWithGreeting() returns error? {
     BidiStreamingTimestampServiceClient btsClient = check new ("http://localhost:9148");
     BidiStreamingGreetServerStreamingClient streamingClient = check btsClient->bidiStreamingGreetServer();
@@ -36,7 +36,7 @@ isolated function testBidiTimestampWithGreeting() returns error? {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBiDiTimestampWithBidiGreeting() returns error? {
     BidiStreamingTimestampServiceClient utsClient = check new ("http://localhost:9148");
     BidiStreamingGreetBothStreamingClient streamingClient = check utsClient->bidiStreamingGreetBoth();
@@ -59,7 +59,7 @@ isolated function testBiDiTimestampWithBidiGreeting() returns error? {
     }
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiTimestampWithBidiTime() returns error? {
     BidiStreamingTimestampServiceClient utsClient = check new ("http://localhost:9148");
     BidiStreamingExchangeTimeStreamingClient streamingClient = check utsClient->bidiStreamingExchangeTime();
@@ -77,7 +77,7 @@ isolated function testBidiTimestampWithBidiTime() returns error? {
     test:assertEquals(<time:Utc>result, expectedTime);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBiDiTimestampWithBidiTimeContext() returns error? {
 
     BidiStreamingTimestampServiceClient utsClient = check new ("http://localhost:9148");

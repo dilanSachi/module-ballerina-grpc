@@ -19,7 +19,7 @@ import ballerina/test;
 
 final HelloWorld98Client helloWorld5BlockingEp = check new ("http://localhost:9095");
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testInvalidRemoteMethod() {
     string name = "WSO2";
     string|grpc:Error result = helloWorld5BlockingEp->hello(name);
@@ -27,7 +27,7 @@ function testInvalidRemoteMethod() {
     test:assertEquals((<grpc:Error>result).message(), "No registered method descriptor for 'grpcservices.HelloWorld98/hello1'");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testInvalidInputParameter() returns grpc:Error? {
     string age = "";
     int response = check helloWorld5BlockingEp->testInt(age);

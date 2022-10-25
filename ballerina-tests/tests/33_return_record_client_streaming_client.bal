@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/io;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingFromReturnRecord() returns grpc:Error? {
     HelloWorld33Client helloWorldEp = check new ("http://localhost:9123");
     SayHelloStreamingClient streamingClient = check helloWorldEp->sayHello();
@@ -39,7 +39,7 @@ isolated function testClientStreamingFromReturnRecord() returns grpc:Error? {
     test:assertEquals(<SampleMsg33>(<ContextSampleMsg33>response).content, {name: "WSO2", id: 1});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingSendError() returns grpc:Error? {
     HelloWorld33Client helloWorldEp = check new ("http://localhost:9123");
     SayHelloStreamingClient streamingClient = check helloWorldEp->sayHello();
@@ -51,7 +51,7 @@ isolated function testClientStreamingSendError() returns grpc:Error? {
     test:assertEquals((<grpc:Error>err).message(), "Client call was cancelled.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingReceiveAfterSendError() returns grpc:Error? {
     HelloWorld33Client helloWorldEp = check new ("http://localhost:9123");
     SayHelloStreamingClient streamingClient = check helloWorldEp->sayHello();

@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testErrorResponse() returns grpc:Error? {
     string name = "WSO2";
     // Client endpoint configuration

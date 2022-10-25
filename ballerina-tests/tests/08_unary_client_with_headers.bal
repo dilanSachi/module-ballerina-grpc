@@ -21,7 +21,7 @@ import ballerina/protobuf.types.wrappers;
 // Client endpoint configuration
 final HelloWorld101Client helloWorld8BlockingEp = check new ("http://localhost:9098");
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHeadersInUnaryClient() returns grpc:Error? {
 
     //Working with custom headers
@@ -35,7 +35,7 @@ function testHeadersInUnaryClient() returns grpc:Error? {
     test:assertEquals(response.content, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHeadersInBlockingClient() returns grpc:Error? {
     wrappers:ContextString requestMessage = {content: "WSO2", headers: {"x-id": "0987654321"}};
     // Executing unary blocking call

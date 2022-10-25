@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnarySecuredBlocking() returns grpc:Error? {
     HelloWorld85Client helloWorld9BlockingEp = check new ("https://localhost:9099", {
         secureSocket: {

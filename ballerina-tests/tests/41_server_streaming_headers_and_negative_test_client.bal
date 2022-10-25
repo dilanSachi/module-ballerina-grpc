@@ -18,14 +18,14 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testServerStreamingWithCustomHeaders() returns grpc:Error? {
     Chat41Client ep = check new ("http://localhost:9141");
     wrappers:ContextStringStream call1 = check ep->call1Context({name: "John", message: "Hi Bella"});
     test:assertEquals(call1.headers["h1"], "v1");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testServerStreamingWithCustomError() returns error? {
     Chat41Client ep = check new ("http://localhost:9141");
     stream<string, error?> strm = check ep->call2({name: "John", message: "Hi Bella"});

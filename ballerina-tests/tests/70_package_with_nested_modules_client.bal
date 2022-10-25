@@ -19,14 +19,14 @@ import ballerina/grpc;
 import grpc_tests.messages.message2;
 import grpc_tests.messages.message1;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryPackageWithNestedModules() returns error? {
     helloWorld70Client 'client = check new ("http://localhost:9170");
     message2:ResMessage response = check 'client->helloWorld70Unary({req: 100, value: "Hello Service"});
     test:assertEquals(response, {req: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientStreamingPackageWithNestedModules() returns error? {
     helloWorld70Client 'client = check new ("http://localhost:9170");
     HelloWorld70ClientStreamStreamingClient streamingClient = check 'client->helloWorld70ClientStream();
@@ -37,7 +37,7 @@ function testClientStreamingPackageWithNestedModules() returns error? {
     test:assertEquals(response, {req: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingPackageWithNestedModules() returns error? {
     helloWorld70Client 'client = check new ("http://localhost:9170");
     message1:ReqMessage m1 = {req: 1, value: "Hello Service"};
@@ -46,7 +46,7 @@ function testServerStreamingPackageWithNestedModules() returns error? {
     test:assertEquals(response.next(), {value: {req: 2, value: "Hi"}});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testBidiStreamingPackageWithNestedModules() returns error? {
     helloWorld70Client 'client = check new ("http://localhost:9170");
     HelloWorld70BidiStreamStreamingClient streamingClient = check 'client->helloWorld70BidiStream();

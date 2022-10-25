@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveStreamingResponseFromReturnWithBasicAuth() returns error? {
     SampleMsg32 reqMsg = {name: "WSO2", id: 2};
     HelloWorld32Client helloWorldEp = check new ("http://localhost:9122");
@@ -37,7 +37,7 @@ function testReceiveStreamingResponseFromReturnWithBasicAuth() returns error? {
     test:assertEquals(count, 4);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveStreamingResponseWithHeaders() returns error? {
     SampleMsg32 reqMsg = {name: "WSO2", id: 2};
     HelloWorld32Client helloWorldEp = check new ("http://localhost:9222");

@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testSendAndReceiveEnum() returns grpc:Error? {
     TestEnumServiceClient blockingEp = check new ("http://localhost:9102");
     OrderInfo orderReq = {id: "100500", mode: r};

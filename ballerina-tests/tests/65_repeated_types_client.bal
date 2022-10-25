@@ -18,7 +18,7 @@ import ballerina/test;
 import ballerina/protobuf.types.'any;
 import ballerina/time;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPredefinedTypesAsRepeatedValues() returns error? {
     RepeatedTypesServiceClient repeatedClient = check new ("http://localhost:9165");
 

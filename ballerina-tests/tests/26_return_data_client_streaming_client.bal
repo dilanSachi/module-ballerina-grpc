@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingFromReturn() returns grpc:Error? {
     string[] requests = ["Hi Sam", "Hey Sam", "GM Sam"];
     HelloWorld26Client helloWorldEp = check new ("http://localhost:9116");

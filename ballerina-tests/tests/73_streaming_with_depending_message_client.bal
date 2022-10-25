@@ -17,7 +17,7 @@
 import ballerina/test;
 import ballerina/grpc;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveUnaryResponse() returns error? {
     HelloWorld73Client helloWorldEp = check new ("http://localhost:9173");
     ReplyMessage result = check helloWorldEp->hello73Unary("Hi");
@@ -25,7 +25,7 @@ function testReceiveUnaryResponse() returns error? {
     test:assertEquals(result, expectedResult);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveServerStreamingResponse() returns error? {
     HelloWorld73Client helloWorldEp = check new ("http://localhost:9173");
     stream<ReplyMessage, grpc:Error?> result = check helloWorldEp->hello73Server("Hi");
@@ -38,7 +38,7 @@ function testReceiveServerStreamingResponse() returns error? {
     test:assertEquals(waitCount, 2);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveClientStreamingResponse() returns error? {
     HelloWorld73Client helloWorldEp = check new ("http://localhost:9173");
     Hello73ClientStreamingClient 'client = check helloWorldEp->hello73Client();
@@ -49,7 +49,7 @@ function testReceiveClientStreamingResponse() returns error? {
     test:assertEquals(response, {id: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testReceiveBidiStreamingResponse() returns error? {
     HelloWorld73Client helloWorldEp = check new ("http://localhost:9173");
     Hello73BidiStreamingClient 'client = check helloWorldEp->hello73Bidi();

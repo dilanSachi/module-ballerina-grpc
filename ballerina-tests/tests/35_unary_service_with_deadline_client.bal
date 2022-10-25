@@ -19,7 +19,7 @@ import ballerina/test;
 import ballerina/time;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testCallWithingDeadline() returns grpc:Error? {
     HelloWorld35Client helloWorldClient = check new ("http://localhost:9125");
     time:Utc current = time:utcNow();
@@ -29,7 +29,7 @@ isolated function testCallWithingDeadline() returns grpc:Error? {
     test:assertEquals(context.content, "Ack");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testCallExceededDeadline() returns grpc:Error? {
     HelloWorld35Client helloWorldClient = check new ("http://localhost:9125");
     time:Utc current = time:utcNow();

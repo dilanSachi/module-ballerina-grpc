@@ -19,7 +19,7 @@ import ballerina/test;
 import ballerina/protobuf.types.wrappers;
 
 @test:Config {
-    enable: true,
+    enable: false,
     groups: ["ldap"]
 }
 isolated function testStringValueReturnWithLdapAuth() returns grpc:Error? {
@@ -43,7 +43,7 @@ isolated function testStringValueReturnWithLdapAuth() returns grpc:Error? {
 }
 
 @test:Config {
-    enable: true,
+    enable: false,
     groups: ["ldap"]
 }
 isolated function testStringValueReturnWithInvalidLdapAuth() returns grpc:Error? {
@@ -78,7 +78,7 @@ isolated function testStringValueReturnWithInvalidLdapAuth() returns grpc:Error?
 }
 
 @test:Config {
-    enable: true,
+    enable: false,
     groups: ["ldap"]
 }
 isolated function testStringValueReturnWithEmptyLdapAuth() returns grpc:Error? {
@@ -102,7 +102,7 @@ isolated function testStringValueReturnWithEmptyLdapAuth() returns grpc:Error? {
 }
 
 @test:Config {
-    enable: true,
+    enable: false,
     groups: ["ldap"]
 }
 isolated function testStringValueReturnWithUnauthorizedLdapAuth() returns grpc:Error? {

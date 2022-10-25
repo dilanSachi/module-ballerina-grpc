@@ -16,7 +16,7 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryWithHeadersContext() returns error? {
     HeadersServiceClient ep = check new ("http://localhost:9145");
     HSReq reqMsg = {name: "Ann", message: "Hey"};
@@ -27,7 +27,7 @@ function testUnaryWithHeadersContext() returns error? {
     test:assertEquals(response.headers["unary-res-header"], ["abcde", "fgh"]);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingWithHeadersContext() returns error? {
     HeadersServiceClient ep = check new ("http://localhost:9145");
     HSReq reqMsg = {name: "Ann", message: "Hey"};
@@ -38,7 +38,7 @@ function testServerStreamingWithHeadersContext() returns error? {
 
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientStreamingWithContextHeaders() returns error? {
     HeadersServiceClient ep = check new ("http://localhost:9145");
     ClientStrStreamingClient streamingClient = check ep->clientStr();
@@ -63,7 +63,7 @@ function testClientStreamingWithContextHeaders() returns error? {
     test:assertEquals((<ContextHSRes>response).headers["client-steaming-res-header"], ["1234567890", "2233445677"]);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testBidirectionalStreamingWithContextHeaders() returns error? {
     HeadersServiceClient ep = check new ("http://localhost:9145");
     BidirectionalStrStreamingClient streamingClient = check ep->bidirectionalStr();

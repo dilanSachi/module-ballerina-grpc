@@ -36,7 +36,7 @@ grpc:RetryConfiguration failingRetryConfig = {
 final RetryServiceClient retryClient = check new ("http://localhost:9112", timeout = 1, retryConfiguration = retryConfig);
 final RetryServiceClient failingRetryClient = check new ("http://localhost:9112", timeout = 1, retryConfiguration = failingRetryConfig);
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRetry() returns grpc:Error? {
     string result = check retryClient->getResult("UnavailableError");
     test:assertEquals(result, "Total Attempts: 4");
@@ -45,7 +45,7 @@ function testRetry() returns grpc:Error? {
     test:assertEquals(result, "Total Attempts: 4");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRetryFailingClient() {
     string|grpc:Error result = failingRetryClient->getResult("FailingRetryClient");
     test:assertTrue(result is grpc:Error);

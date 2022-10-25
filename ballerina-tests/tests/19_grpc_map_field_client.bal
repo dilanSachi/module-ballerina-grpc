@@ -19,7 +19,7 @@ import ballerina/test;
 
 final NegotiatorClient negotiatorEp = check new ("http://localhost:9109");
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testMapFields() returns grpc:Error? {
     MetricsPublishRequest request = {
         id: "xxxxx",
@@ -35,7 +35,7 @@ function testMapFields() returns grpc:Error? {
     check negotiatorEp->publishMetrics(request);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testOptionalFields() returns grpc:Error? {
     HandshakeRequest request = {};
     HandshakeResponse result = check negotiatorEp->handshake(request);

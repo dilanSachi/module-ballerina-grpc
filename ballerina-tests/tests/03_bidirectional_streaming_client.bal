@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/lang.runtime as runtime;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreaming() returns grpc:Error? {
     ChatClient chatEp = check new ("https://localhost:9093", {
         secureSocket: {
@@ -57,7 +57,7 @@ isolated function testBidiStreaming() returns grpc:Error? {
     check ep->complete();
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingInvalidSecureSocketConfigs() returns grpc:Error? {
     ChatClient|grpc:Error result = new ("https://localhost:9093", {
         secureSocket: {
@@ -140,7 +140,7 @@ isolated function testBidiStreamingInvalidSecureSocketConfigs() returns grpc:Err
     test:assertEquals((<grpc:Error>result).message(), "TrustStore password must be provided for secure connection.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingWithPublicCertPrivateKey() returns grpc:Error? {
     ChatClient chatEp = check new ("https://localhost:9093", {
         secureSocket: {
@@ -166,7 +166,7 @@ isolated function testBidiStreamingWithPublicCertPrivateKey() returns grpc:Error
     check ep->complete();
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingWithNoCertFile() returns grpc:Error? {
     ChatClient|grpc:Error result = new ("https://localhost:9093", {
         secureSocket: {
@@ -189,7 +189,7 @@ isolated function testBidiStreamingWithNoCertFile() returns grpc:Error? {
     test:assertEquals((<grpc:Error>result).message(), "Certificate file location must be provided for secure connection.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingWithNoKeyFile() returns grpc:Error? {
     ChatClient|grpc:Error result = new ("https://localhost:9093", {
         secureSocket: {
@@ -212,7 +212,7 @@ isolated function testBidiStreamingWithNoKeyFile() returns grpc:Error? {
     test:assertEquals((<grpc:Error>result).message(), "Private key file location must be provided for secure connection.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingWithNoPublicCertFile() returns grpc:Error? {
     ChatClient|grpc:Error result = new ("https://localhost:9093", {
         secureSocket: {
@@ -232,7 +232,7 @@ isolated function testBidiStreamingWithNoPublicCertFile() returns grpc:Error? {
     test:assertEquals((<grpc:Error>result).message(), "Certificate file location must be provided for secure connection.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingDefaultHttpsPortWithNoService() returns grpc:Error? {
     if !isWindowsEnvironment() {
         ChatClient chatClient = check new ("https://localhost", {

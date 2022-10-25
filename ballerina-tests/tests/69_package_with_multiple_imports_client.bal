@@ -19,14 +19,14 @@ import ballerina/grpc;
 import grpc_tests.message2;
 import grpc_tests.message1;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryPackageWithMultipleImports() returns error? {
     packagingServiceClient 'client = check new ("http://localhost:9169");
     message2:ResMessage2 response = check 'client->hello1({req: 100, value: "Hello Service"});
     test:assertEquals(response, {req: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testClientStreamingPackageWithMultipleImports() returns error? {
     packagingServiceClient 'client = check new ("http://localhost:9169");
     Hello3StreamingClient streamingClient = check 'client->hello3();
@@ -37,7 +37,7 @@ function testClientStreamingPackageWithMultipleImports() returns error? {
     test:assertEquals(response, {req: 1, value: "Hello"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingPackageWithMultipleImports() returns error? {
     packagingServiceClient 'client = check new ("http://localhost:9169");
     message1:ReqMessage1 m1 = {req: 1, value: "Hello Service"};
@@ -46,7 +46,7 @@ function testServerStreamingPackageWithMultipleImports() returns error? {
     test:assertEquals(response.next(), {value: {req: 2, value: "Hi"}});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testBidiStreamingPackageWithMultipleImports() returns error? {
     packagingServiceClient 'client = check new ("http://localhost:9169");
     Hello4StreamingClient streamingClient = check 'client->hello4();
@@ -59,7 +59,7 @@ function testBidiStreamingPackageWithMultipleImports() returns error? {
     test:assertEquals(response, {req: 2, value: "Hi"});
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testRootMessagePackageWithMultipleImports() returns error? {
     packagingServiceClient 'client = check new ("http://localhost:9169");
     Hello5StreamingClient streamingClient = check 'client->hello5();

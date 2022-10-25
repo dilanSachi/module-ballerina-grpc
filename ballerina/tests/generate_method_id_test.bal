@@ -16,7 +16,7 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testGenerateMethodId() returns error? {
     string result = generateMethodId((), "testService", "testRPC");
     test:assertEquals(result, "testService/testRPC");

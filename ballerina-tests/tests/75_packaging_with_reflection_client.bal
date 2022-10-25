@@ -16,7 +16,7 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingListServicesReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -35,7 +35,7 @@ function testPackagingListServicesReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileByFilenameReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -69,7 +69,7 @@ function testPackagingFileByFilenameReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileContainingSymbolReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -103,7 +103,7 @@ function testPackagingFileContainingSymbolReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileContainingMethodSymbolReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -137,7 +137,7 @@ function testPackagingFileContainingMethodSymbolReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileContainingMessageSymbolReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -171,7 +171,7 @@ function testPackagingFileContainingMessageSymbolReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileContainingUnknownSymbolReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -191,7 +191,7 @@ function testPackagingFileContainingUnknownSymbolReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingUnknownFilenameReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -211,7 +211,7 @@ function testPackagingUnknownFilenameReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileContainingExtensionReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -243,7 +243,7 @@ function testPackagingFileContainingExtensionReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingFileContainingUnknownExtensionReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -270,7 +270,7 @@ function testPackagingFileContainingUnknownExtensionReflection() returns error? 
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingAllExtensionNumbersOfTypeReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -293,7 +293,7 @@ function testPackagingAllExtensionNumbersOfTypeReflection() returns error? {
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingAllExtensionNumbersOfNonExistingTypeReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();
@@ -316,7 +316,7 @@ function testPackagingAllExtensionNumbersOfNonExistingTypeReflection() returns e
     });
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testPackagingNoArgumentsReflection() returns error? {
     ServerReflectionClient reflectionClient = check new ("http://localhost:9171");
     ServerReflectionInfoStreamingClient streamingClient = check reflectionClient->ServerReflectionInfo();

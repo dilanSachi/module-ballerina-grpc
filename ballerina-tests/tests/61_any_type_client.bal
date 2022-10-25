@@ -22,7 +22,7 @@ import ballerina/time;
 
 type NilType ();
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public function testProtbufAnyType() returns error? {
     AnyTypeServerClient ep = check new ("http://localhost:9161");
 

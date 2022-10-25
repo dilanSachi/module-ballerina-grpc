@@ -16,14 +16,14 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnaryWithEmptyValues() returns error? {
     EmptyHandlerClient ep = check new ("http://localhost:9146");
     var res = check ep->unaryWithEmpty();
     test:assertEquals(res, ());
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testServerStreamingWithEmptyValues() returns error? {
     EmptyHandlerClient ep = check new ("http://localhost:9146");
     stream<string, error?> strm = check ep->serverStrWithEmpty();
@@ -36,7 +36,7 @@ function testServerStreamingWithEmptyValues() returns error? {
     test:assertEquals(i, 4);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testClientStreamingWithEmptyValues() returns error? {
     EmptyHandlerClient ep = check new ("http://localhost:9146");
     ClientStrWithEmptyStreamingClient sc = check ep->clientStrWithEmpty();

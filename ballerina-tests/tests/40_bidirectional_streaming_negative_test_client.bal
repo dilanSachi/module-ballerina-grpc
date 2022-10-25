@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingWithCustomError() returns grpc:Error? {
     ChatWithCallerClient chatClient = check new ("http://localhost:9140");
     CallStreamingClient streamingCaller = check chatClient->call();

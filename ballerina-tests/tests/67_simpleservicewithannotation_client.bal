@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testSimpleServiceWithAnnotation() returns error? {
     SimpleServiceWithAnnotationClient annotClient = check new ("http://localhost:9167");
 

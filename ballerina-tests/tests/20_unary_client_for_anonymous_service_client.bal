@@ -16,7 +16,7 @@
 
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testAnonymousService() returns error? {
     check ep20.attach(AnonService1, "AnonService1");
     check ep20.'start();
@@ -27,7 +27,7 @@ function testAnonymousService() returns error? {
     check ep20.immediateStop();
 }
 
-@test:Config {dependsOn: [testAnonymousService], enable: true}
+@test:Config {dependsOn: [testAnonymousService], enable: false}
 function testAnonymousServiceMultipleTimes() returns error? {
     check ep20.attach(AnonService1, "AnonService1");
     check ep20.'start();
@@ -39,7 +39,7 @@ function testAnonymousServiceMultipleTimes() returns error? {
     check ep20.immediateStop();
 }
 
-@test:Config {dependsOn: [testAnonymousServiceMultipleTimes], enable: true}
+@test:Config {dependsOn: [testAnonymousServiceMultipleTimes], enable: false}
 function testAnonymousUnregisteredService() returns error? {
     error? err = ep20.attach(unregisteredService);
     test:assertTrue(err is error);
@@ -47,7 +47,7 @@ function testAnonymousUnregisteredService() returns error? {
             "Service path cannot be nil");
 }
 
-@test:Config {dependsOn: [testAnonymousUnregisteredService], enable: true}
+@test:Config {dependsOn: [testAnonymousUnregisteredService], enable: false}
 function testAnonymousServiceWithoutRPCImplemented() returns error? {
     string msg1 = "Error while registering the service. " +
     "Simple remote function 'AnonService1.hello2' does not exist.";

@@ -17,7 +17,7 @@
 // This is client implementation for bidirectional streaming scenario
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testBidiStreamingFromReturn() returns error? {
 
     ChatFromReturnClient chatEp = check new ("http://localhost:9117");

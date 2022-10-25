@@ -18,7 +18,7 @@ import ballerina/test;
 
 helloWorldWithNestedMessageNestedEnumClient nestedClient = check new ("http://localhost:9158");
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testNestedMessageNestedEnumHello() returns error? {
     HelloRequest58 request = {
         name: "WSO2"
@@ -41,7 +41,7 @@ function testNestedMessageNestedEnumHello() returns error? {
     test:assertEquals(actualResponse, expectedResponse);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testNestedMessageNestedEnumBye() returns error? {
     FileInfo_Observability_TraceId traceId = {
         id: "1",

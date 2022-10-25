@@ -20,7 +20,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 public function testServerErrorWithGoService() returns error? {
     if !isWindowsEnvironment() {
         ProductInfoClient productClient = check new ("http://localhost:50051");

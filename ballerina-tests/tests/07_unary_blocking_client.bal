@@ -21,49 +21,49 @@ final HelloWorld100Client helloWorld7BlockingEp = check new ("http://localhost:9
 
 //type ResponseTypedesc typedesc<Response>;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryBlockingClient() returns grpc:Error? {
     string name = "WSO2";
     string response = check helloWorld7BlockingEp->hello(name);
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryBlockingIntClient() returns grpc:Error? {
     int age = 10;
     int response = check helloWorld7BlockingEp->testInt(age);
     test:assertEquals(response, 8);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryBlockingFloatClient() returns grpc:Error? {
     float salary = 1000.5;
     float response = check helloWorld7BlockingEp->testFloat(salary);
     test:assertEquals(response, 880.44);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryBlockingBoolClient() returns grpc:Error? {
     boolean isAvailable = false;
     boolean response = check helloWorld7BlockingEp->testBoolean(isAvailable);
     test:assertTrue(response);
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryBlockingReceiveRecord() returns grpc:Error? {
     string msg = "WSO2";
     Response response = check helloWorld7BlockingEp->testResponseInsideMatch(msg);
     test:assertEquals(response.resp, "Acknowledge WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testUnaryBlockingStructClient() returns grpc:Error? {
     Request req = {name: "Sam", message: "Testing."};
     Response response = check helloWorld7BlockingEp->testStruct(req);
     test:assertEquals(response.resp, "Acknowledge Sam");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnaryClientWithNegativeTimeout() returns grpc:Error? {
     HelloWorld100Client hClient = check new ("http://localhost:9097", {
         timeout: -10
@@ -73,7 +73,7 @@ isolated function testUnaryClientWithNegativeTimeout() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testUnaryClientWithOverflowingTimeout() returns grpc:Error? {
     HelloWorld100Client hClient = check new ("http://localhost:9097", {
         timeout: 2147483699

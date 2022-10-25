@@ -18,7 +18,7 @@ import ballerina/grpc;
 import ballerina/test;
 import ballerina/protobuf.types.wrappers;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     grpc:OAuth2ClientCredentialsGrantConfig config = {
@@ -44,7 +44,7 @@ isolated function testStringValueReturnWithOAuth2() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2PasswordGrantConfig() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     grpc:OAuth2PasswordGrantConfig config = {
@@ -72,7 +72,7 @@ isolated function testStringValueReturnWithOAuth2PasswordGrantConfig() returns g
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2RefreshTokenGrantConfig() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     grpc:OAuth2ClientCredentialsGrantConfig config = {
@@ -124,7 +124,7 @@ isolated function testStringValueReturnWithOAuth2RefreshTokenGrantConfig() retur
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2JwtBearerGrantConfig() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     grpc:OAuth2JwtBearerGrantConfig config = {
@@ -151,7 +151,7 @@ isolated function testStringValueReturnWithOAuth2JwtBearerGrantConfig() returns 
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2NoScope() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     grpc:OAuth2ClientCredentialsGrantConfig config = {
@@ -177,7 +177,7 @@ isolated function testStringValueReturnWithOAuth2NoScope() returns grpc:Error? {
     test:assertEquals(response, "Hello WSO2");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2WithInvalidScopeKey() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     grpc:OAuth2ClientCredentialsGrantConfig config = {
@@ -205,7 +205,7 @@ isolated function testStringValueReturnWithOAuth2WithInvalidScopeKey() returns g
     test:assertEquals((<grpc:Error>response).message(), "Permission denied");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2EmptyAuthHeader() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     map<string|string[]> requestHeaders = {
@@ -218,7 +218,7 @@ isolated function testStringValueReturnWithOAuth2EmptyAuthHeader() returns grpc:
     test:assertEquals((<grpc:Error>response).message(), "Empty authentication header.");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2InvalidAuthHeader() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     map<string|string[]> requestHeaders = {
@@ -231,7 +231,7 @@ isolated function testStringValueReturnWithOAuth2InvalidAuthHeader() returns grp
     test:assertEquals((<grpc:Error>response).message(), "Unauthenticated");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 isolated function testStringValueReturnWithOAuth2InvalidAuthHeaderFormat() returns grpc:Error? {
     HelloWorld30Client helloWorldEp = check new ("http://localhost:9120");
     map<string|string[]> requestHeaders = {

@@ -17,7 +17,7 @@
 import ballerina/grpc;
 import ballerina/test;
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello56BiDi() returns error? {
     HelloWorld56Client hClient = check new ("http://localhost:9156");
     Hello56BiDiStreamingClient strClient = check hClient->hello56BiDi();
@@ -27,7 +27,7 @@ function testHello56BiDi() returns error? {
     test:assertEquals((<grpc:Error>response).message(), "Test error from service");
 }
 
-@test:Config {enable: true}
+@test:Config {enable: false}
 function testHello56Unary() returns error? {
     HelloWorld56Client hClient = check new ("http://localhost:9156");
     grpc:Error|string? response = hClient->hello56Unary("Hello from client");
